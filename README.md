@@ -35,7 +35,7 @@ is the first method to explore multi-modalities for DAT prediction.
 ```
 mkdir data
 ```
-down [dataset] (https://drive.google.com/drive/folders/1ViullcWrpfgSf1Uv7-nMhgCuHVS-xhGz?usp=sharing) and zip it in data
+down [dataset](https://drive.google.com/drive/folders/1ViullcWrpfgSf1Uv7-nMhgCuHVS-xhGz?usp=sharing) and zip it in data
 
 # Run
 
