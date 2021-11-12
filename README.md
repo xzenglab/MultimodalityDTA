@@ -30,6 +30,12 @@ is the first method to explore multi-modalities for DAT prediction.
 * sklearn>=0.24.2
 * numpy>=1.19.5
 * pandas>=1.1.5
+# Data download
+
+```
+mkdir data
+```
+down dataset and zip it in data
 
 # Run
 
