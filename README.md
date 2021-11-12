@@ -2,7 +2,7 @@
 
 This is the implementation for the paper Modality-DTA: Multimodality fusion strategy for advanced drug–target affinity prediction
 
-![Image]([https://github.com/xzenglab/MultimodalityDTA](https://github.com/xzenglab/MultimodalityDTA)/image/overview.jpg)
+![Image](https://github.com/xzenglab/MultimodalityDTA/blob/main/image/overview.jpg)
 
 # Abstract
 
