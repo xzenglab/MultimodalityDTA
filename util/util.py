@@ -59,7 +59,6 @@ def read_data():
     
     f=open('./data/labels.txt','r')
     labels=eval(f.read())
-    #labels=list(np.load('./data/binaryDAVIS.npy'))
     
     
     target_class=np.load('./data/target_class.npy').tolist()
