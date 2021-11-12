@@ -47,13 +47,13 @@ def scaler(data):
 
 
 def read_data():
-   ####small sample for two modality
+   #### evaluate on two modality
     f=open('./data/drug2.txt','r')#'Morgan', 'Pubchem'
     drug=eval(f.read())
 
     f=open('./data/target2.txt','r')#'AAC', 'PseudoAAC'
     target=eval(f.read())
-   ####
+   #### evaluate on six modality
     #drug = np.load('./data/drug6.npy',allow_pickle=True).item()
     #target = np.load('./data/target6.npy',allow_pickle=True).item()
     
