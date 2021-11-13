@@ -47,28 +47,77 @@ def scaler(data):
 
 
 def read_data():
-   #### evaluate on two modality
-    f=open('./data/drug2.txt','r')#'Morgan', 'Pubchem'
-    drug=eval(f.read())
+    #ratio=0.8
 
-    f=open('./data/target2.txt','r')#'AAC', 'PseudoAAC'
-    target=eval(f.read())
-   #### evaluate on six modality
-    #drug = np.load('./data/drug6.npy',allow_pickle=True).item()
-    #target = np.load('./data/target6.npy',allow_pickle=True).item()
-    
-    f=open('./data/labels.txt','r')
-    labels=eval(f.read())
-    
-    
-    target_class=np.load('./data/target_class.npy').tolist()
-    drug_class=np.load('./data/drug_class.npy').tolist()
-    
+### data load for Metz dataset
+
+    #df = pd.read_csv('./data/metz/data.csv')
+    #d, t, l = df['smiles'], df['sequence'], df['label']
+    #X_drug, X_target, y  = np.array(d),np.array(t),np.array(l)
+    #drug_encoding = np.load('./data/metz/drug_encoding.npy',allow_pickle=True).item()
+    #target_encoding =np.load('./data/metz/target_encoding.npy',allow_pickle=True).item()
+    #labels=list(y)
+    #drug_class=np.load('./data/metz/drug_class.npy').tolist()
+    #target_class=np.load('./data/metz/target_class.npy').tolist() 
+
+### data load for KIBA dataset
+
+
+    #df = pd.read_csv('./data/kiba/data.csv')
+    #d, t, l = df['smiles'], df['sequence'], df['label']
+    #X_drug, X_target, y  = np.array(d),np.array(t),np.array(l)
+    #drug_encoding = np.load('./data/kiba/drug_encoding.npy',allow_pickle=True).item()
+    #target_encoding =np.load('./data/kiba/target_encoding.npy',allow_pickle=True).item()
+    #labels=list(y)
+    #target_class=np.load('./data/kiba/target_class.npy').tolist()
+    #drug_class=np.load('./data/kiba/drug_class.npy').tolist()
+
+### data load for Davis dataset
+
+
+    df = pd.read_csv('./data/davis/data.csv')
+    d, t, l = df['smiles'], df['sequence'], df['label']
+    X_drug, X_target, y  = np.array(d),np.array(t),np.array(l)
+    drug_encoding = np.load('./data/davis/drug_encoding.npy',allow_pickle=True).item()
+    target_encoding =np.load('./data/davis/target_encoding.npy',allow_pickle=True).item()
+    labels=list(y)
+    target_class=np.load('./data/davis/target_class.npy').tolist()
+    drug_class=np.load('./data/davis/drug_class.npy').tolist()
+
+    #modalitytarget=['AAC', 'PseudoAAC', 'Conjoint_triad', 'Quasi-seq']
+    #modalitydrug=['Morgan', 'Pubchem', 'Daylight', 'rdkit_2d_normalized' ]
+    modalitytarget=['AAC', 'PseudoAAC']
+    modalitydrug=['Morgan', 'Pubchem']
+
+
+
+
+    drug={}
+    target={}
+
+
+    for i in modalitydrug:
+        d=[]
+        for j in X_drug:
+            d.append(drug_encoding[i][j])
+        drug[i]=d
+
+    for i in modalitytarget:
+        t=[]
+        for j in X_target:
+            t.append(target_encoding[i][j])
+        target[i]=t
+
+
+    labels=np.load('./data/metz/metzlabel.npy').tolist()
+    drug_class=np.load('./data/metz/metzdrug_class.npy').tolist()
+    target_class=np.load('./data/metz/metztarget_class.npy').tolist()  
+
     view_number_drug=len(list(drug.keys()))
     view_number_target=len(list(target.keys()))
-#print(view_number)
 
-    ratio=0.7
+    
+    ratio=0.7   
     trainlen=int(ratio*len(labels))
     index = np.array([x for x in range(len(labels))])
     shuffle(index)
@@ -108,13 +157,13 @@ def read_data():
     Normal=1
     if (Normal == 1):
         for v_num in range(view_number_target):
-            target_train[v_num] = Normalize(target_train[v_num])
+            target_train[v_num] = scaler(target_train[v_num])
+            target_test[v_num] = scaler(target_test[v_num])
 
     traintarget = DataSet(target_train, view_number_target, np.array(label_train),np.array(target_class)[index_train])
     testtarget = DataSet(target_test, view_number_target, np.array(label_test),np.array(target_class)[index_test])
     
     return traindrug,testdrug,traintarget,testtarget,view_number_drug,view_number_target 
-    
 
 def xavier_init(fan_in, fan_out, constant=1):
     low = -constant * np.sqrt(6.0 / (fan_in + fan_out))
