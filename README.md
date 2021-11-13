@@ -15,8 +15,11 @@ This is the implementation for the paper Modality-DTA: Multimodality fusion stra
 * pandas>=1.1.5
 
 # Data 
-Please download dataset and tar them in data. 
-Code blocks for different dataset are defined in util/util.py 
+```
+mkdir data
+```
+
+Please download dataset and tar them in data.  Code blocks for different dataset are defined in util/util.py 
 
 
 # Run
