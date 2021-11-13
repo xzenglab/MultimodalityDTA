@@ -84,10 +84,13 @@ def read_data():
     target_class=np.load('./data/davis/target_class.npy').tolist()
     drug_class=np.load('./data/davis/drug_class.npy').tolist()
 
-    #modalitytarget=['AAC', 'PseudoAAC', 'Conjoint_triad', 'Quasi-seq']
-    #modalitydrug=['Morgan', 'Pubchem', 'Daylight', 'rdkit_2d_normalized' ]
-    modalitytarget=['AAC', 'PseudoAAC']
-    modalitydrug=['Morgan', 'Pubchem']
+
+    modalitytarget=['AAC', 'PseudoAAC', 'Conjoint_triad', 'Quasi-seq', 'ESPF', 'CNN']
+    modalitydrug=['Morgan', 'Pubchem', 'Daylight', 'rdkit_2d_normalized', 'ESPF', 'CNN' ]
+
+ ### two modality 
+    #modalitytarget=['AAC', 'PseudoAAC']
+    #modalitydrug=['Morgan', 'Pubchem']
 
 
 
