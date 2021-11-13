@@ -19,7 +19,7 @@ This is the implementation for the paper Modality-DTA: Multimodality fusion stra
 mkdir data
 ```
 
-Please download dataset and tar them in data.  Code blocks for different dataset are defined in util/util.py 
+Please download [dataset](https://drive.google.com/drive/folders/1iW9bhfhmH-rCBD7SY9tw82iG5k7i8MJ3?usp=sharing) and tar zxvf them in data.  Code blocks for different dataset are defined in util/util.py 
 
 
 # Run
