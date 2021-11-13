@@ -2,7 +2,6 @@
 
 This is the implementation for the paper Modality-DTA: Multimodality fusion strategy for advanced drug–target affinity prediction
 
-![Image](https://github.com/xzenglab/MultimodalityDTA/blob/main/image/overview.jpg)
 
 
 
@@ -16,7 +15,8 @@ This is the implementation for the paper Modality-DTA: Multimodality fusion stra
 * pandas>=1.1.5
 
 # Data 
-Please  see the [readme](https://github.com/xzenglab/MultimodalityDTA/blob/main/data/readme.md) for detailed explanation
+Please download dataset and tar them in data. 
+Code blocks for different dataset are defined in util/util.py 
 
 
 # Run
