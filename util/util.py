@@ -63,9 +63,9 @@ def read_data():
 ### data load for KIBA dataset
 
 
-    #df = pd.read_csv('./data/kiba/data.csv')
-    #d, t, l = df['smiles'], df['sequence'], df['label']
-    #X_drug, X_target, y  = np.array(d),np.array(t),np.array(l)
+    #X_drug=np.load('./data/davis/SMILES.npy')
+    #X_target=np.load('./data/davis/Target_seq.npy')
+    #y=np.load('./data/davis/y.npy')
     #drug_encoding = np.load('./data/kiba/drug_encoding.npy',allow_pickle=True).item()
     #target_encoding =np.load('./data/kiba/target_encoding.npy',allow_pickle=True).item()
     #labels=list(y)
@@ -75,22 +75,19 @@ def read_data():
 ### data load for Davis dataset
 
 
-    df = pd.read_csv('./data/davis/data.csv')
-    d, t, l = df['smiles'], df['sequence'], df['label']
-    X_drug, X_target, y  = np.array(d),np.array(t),np.array(l)
+    X_drug=np.load('./data/davis/SMILES.npy')
+    X_target=np.load('./data/davis/Target_seq.npy')
+    y=np.load('./data/davis/y.npy')
     drug_encoding = np.load('./data/davis/drug_encoding.npy',allow_pickle=True).item()
     target_encoding =np.load('./data/davis/target_encoding.npy',allow_pickle=True).item()
     labels=list(y)
     target_class=np.load('./data/davis/target_class.npy').tolist()
     drug_class=np.load('./data/davis/drug_class.npy').tolist()
 
-
-    modalitytarget=['AAC', 'PseudoAAC', 'Conjoint_triad', 'Quasi-seq', 'ESPF', 'CNN']
-    modalitydrug=['Morgan', 'Pubchem', 'Daylight', 'rdkit_2d_normalized', 'ESPF', 'CNN' ]
-
- ### two modality 
-    #modalitytarget=['AAC', 'PseudoAAC']
-    #modalitydrug=['Morgan', 'Pubchem']
+#modalitytarget=['AAC', 'PseudoAAC', 'Conjoint_triad', 'Quasi-seq', 'ESPF', 'CNN']
+   # modalitydrug=['Morgan', 'Pubchem', 'Daylight', 'rdkit_2d_normalized', 'ESPF', 'CNN' ]
+    modalitytarget=['AAC', 'PseudoAAC']
+    modalitydrug=['Morgan', 'Pubchem']
 
 
 
@@ -112,9 +109,6 @@ def read_data():
         target[i]=t
 
 
-    labels=np.load('./data/metz/metzlabel.npy').tolist()
-    drug_class=np.load('./data/metz/metzdrug_class.npy').tolist()
-    target_class=np.load('./data/metz/metztarget_class.npy').tolist()  
 
     view_number_drug=len(list(drug.keys()))
     view_number_target=len(list(target.keys()))
@@ -174,8 +168,3 @@ def xavier_init(fan_in, fan_out, constant=1):
     return tf.random_uniform((fan_in, fan_out),
                              minval=low, maxval=high,
                              dtype=tf.float32)
-
-
-
-
-
